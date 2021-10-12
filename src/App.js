@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+
+import useRule, { RULE_ACTIONS } from "./hooks/Rule";
+
+import Controll from "./components/Controll";
+import Window from "./components/window";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [globalStates, setGlobalStates] = useState({
+		rule: 30,
+		row: 50,
+		size: 15,
+		dir: "rtl"
+	});
+	const [states, { nextState, prevState, setRule }] = useRule(globalStates);
+	return (
+		<>
+			<Window cells={states} {...globalStates} />
+			<Controll
+				{...globalStates}
+				onNext={nextState}
+				onPrev={prevState}
+				onRule={setRule}
+				onUpdate={setGlobalStates}
+			/>
+		</>
+	);
 }
 
 export default App;
