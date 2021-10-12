@@ -8,8 +8,8 @@ import Window from "./components/window";
 function App() {
 	const [globalStates, setGlobalStates] = useState({
 		rule: 30,
-		row: 50,
-		size: 15,
+		row: 275,
+		size: 2,
 		dir: "rtl"
 	});
 	const [states, { nextState, prevState, setRule }] = useRule(globalStates);

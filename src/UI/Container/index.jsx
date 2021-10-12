@@ -5,7 +5,7 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	${({scroll}) => scroll && "overflow: scroll;"}
+	${({scroll}) => scroll && "overflow: auto;"}
 	${({scroll}) => scroll && "box-sizing: border-box;"}
 
 `;
